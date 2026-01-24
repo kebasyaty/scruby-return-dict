@@ -55,7 +55,7 @@ uv add scruby-return-dict
 [![Examples](https://raw.githubusercontent.com/kebasyaty/scruby-return-dict/v0/assets/links/examples.svg "Examples")](https://kebasyaty.github.io/scruby-return-dict/latest/pages/usage/ "Examples")
 
 ```python
-import scruby_return_ict
+import scruby_return_dict
 ```
 
 <br>
