@@ -30,11 +30,11 @@ theme:
     - toc.follow
   palette:
     scheme: slate
-    primary: indigo
-    accent: indigo
+    primary: teal
+    accent: teal
 
 extra_css:
-  - stylesheets/themes/github_indigo.css
+  - stylesheets/themes/github_teal.css
   - stylesheets/extra.css
 
 plugins:
