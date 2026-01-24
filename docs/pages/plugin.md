@@ -1,0 +1,1 @@
+::: scruby-return-dict.plugin
