@@ -52,8 +52,6 @@ uv add scruby-return-dict
 
 ## Usage
 
-[![Examples](https://raw.githubusercontent.com/kebasyaty/scruby-return-dict/v0/assets/links/examples.svg "Examples")](https://github.com/kebasyaty/scruby-return-dict/tree/main/examples "Examples")
-OR
 [![Examples](https://raw.githubusercontent.com/kebasyaty/scruby-return-dict/v0/assets/links/examples.svg "Examples")](https://kebasyaty.github.io/scruby-return-dict/latest/pages/usage/ "Examples")
 
 ```python
