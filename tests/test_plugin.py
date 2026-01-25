@@ -1,0 +1,69 @@
+"""Test Plugin."""
+
+from __future__ import annotations
+
+import pytest
+from pydantic import Field
+from scruby import Scruby, ScrubyModel, ScrubySettings
+
+from scruby_return_dict import ReturnDict
+
+pytestmark = pytest.mark.asyncio(loop_scope="module")
+
+# Plugins connection.
+ScrubySettings.plugins = [
+    ReturnDict,
+]
+
+
+class Car(ScrubyModel):
+    """Car model."""
+
+    brand: str = Field(strict=True, frozen=True)
+    model: str = Field(strict=True, frozen=True)
+    year: int = Field(strict=True, frozen=True)
+    power_reserve: int = Field(strict=True, frozen=True)
+    description: str = Field(strict=True)
+    # key is always at bottom
+    key: str = Field(
+        strict=True,
+        frozen=True,
+        default_factory=lambda data: f"{data['brand']}:{data['model']}",
+    )
+
+
+class TestPositive:
+    """Positive tests."""
+
+    async def test_find_one(self) -> None:
+        """Test a `find_one` method."""
+        # Delete DB.
+        Scruby.napalm()
+        #
+        # Get collection `Car`
+        car_coll = await Scruby.collection(Car)
+        # Create cars.
+        for num in range(1, 10):
+            car = Car(
+                brand="Mazda",
+                model=f"EZ-6 {num}",
+                year=2025,
+                power_reserve=600,
+                description="Electric cars are the future of the global automotive industry.",
+            )
+            await car_coll.add_doc(car)
+        # Find a car
+        car: Car | None = await car_coll.plugins.returnDict.find_one(
+            filter_fn=lambda doc: doc.brand == "Mazda",
+        )
+
+        assert car.brand == "Mazda"
+
+        car_2: Car | None = await car_coll.plugins.returnDict.find_one(
+            filter_fn=lambda doc: doc.brand == "Mazda" and doc.model == "EZ-6 9",
+        )
+
+        assert car_2.model == "EZ-6 9"
+        #
+        # Delete DB.
+        Scruby.napalm()
