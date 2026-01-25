@@ -1,6 +1,6 @@
 [project]
 name = "scruby-return-dict"
-version = "0.1.0"
+version = "0.2.0"
 description = "Plugin for Scruby - In search methods, returns results in the form of dictionaries."
 readme = "README.md"
 authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
@@ -14,7 +14,7 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: MacOS :: MacOS X",
-    "Operating System :: Microsoft :: Windows",
+    # "Operating System :: Microsoft :: Windows",
     "Operating System :: POSIX",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3",
@@ -29,7 +29,7 @@ classifiers = [
     "Topic :: Database",
     "Typing :: Typed",
 ]
-dependencies = []
+dependencies = ["anyio>=4.12.1", "scruby-plugin>=0.3.6"]
 
 [project.urls]
 Homepage = "https://kebasyaty.github.io/scruby-return-dict/"
@@ -52,10 +52,17 @@ requires = ["uv_build>=0.9.24,<0.10.0"]
 build-backend = "uv_build"
 
 [dependency-groups]
-dev = []
-lint = []
-test = []
-docs = []
+dev = ["scruby>=0.34.7"]
+lint = ["pre-commit>=4.5.1", "pyrefly>=0.49.0", "ruff>=0.14.14"]
+test = ["pytest>=9.0.2", "pytest-asyncio>=1.3.0"]
+docs = [
+    "mike>=2.1.3",
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.7.1",
+    "mkdocstrings[python]>=1.0.1",
+    "pygments>=2.19.2",
+    "pymdown-extensions>=10.20.1",
+]
 types = []
 
 [tool.ruff]

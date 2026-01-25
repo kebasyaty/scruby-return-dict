@@ -1,9 +1,9 @@
 ### CHANGELOG
 
-#### v0.2.0-beta 0000-00-00
+#### v0.2.0 2026-01-25
 
-- Library publication.
+- First publication on PYPI.
 
-#### v0.1.0-pre-alpha 2026-01-24
+#### v0.1.0 2026-01-24
 
 - The repository is initialized.
