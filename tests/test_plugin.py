@@ -73,3 +73,48 @@ class TestPositive:
         #
         # Delete DB.
         Scruby.napalm()
+
+    async def test_find_many(self) -> None:
+        """Test a `find_many` method."""
+        # Delete DB.
+        Scruby.napalm()
+        #
+        # Get collection `Car`
+        car_coll = await Scruby.collection(Car)
+        # Create cars.
+        for num in range(1, 10):
+            car = Car(
+                brand="Mazda",
+                model=f"EZ-6 {num}",
+                year=2025,
+                power_reserve=600,
+                description="Electric cars are the future of the global automotive industry.",
+            )
+            await car_coll.add_doc(car)
+        # Find a car
+        car_list: list[dict[str, Any]] | None = await car_coll.plugins.returnDict.find_many()
+
+        assert car_list is not None
+        assert isinstance(car_list, list)
+        assert len(car_list) == 9
+        assert car_list[0]["brand"] == "Mazda"
+
+        car_2_list: list[dict[str, Any]] | None = await car_coll.plugins.returnDict.find_many(
+            filter_fn=lambda doc: doc.brand == "Mazda",
+        )
+
+        assert car_2_list is not None
+        assert isinstance(car_2_list, list)
+        assert len(car_2_list) == 9
+        assert car_2_list[0]["brand"] == "Mazda"
+
+        car_3_list: list[dict[str, Any]] | None = await car_coll.plugins.returnDict.find_many(
+            filter_fn=lambda doc: doc.brand == "Mazda" and doc.model == "EZ-6 9",
+        )
+
+        assert car_3_list is not None
+        assert isinstance(car_3_list, list)
+        assert car_3_list[0]["model"] == "EZ-6 9"
+        #
+        # Delete DB.
+        Scruby.napalm()
