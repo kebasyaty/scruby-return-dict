@@ -31,13 +31,6 @@
 
 ##
 
-<p>
-  <a href="https://github.com/kebasyaty/scruby-return-dict" alt="Project Status">
-    <img src="https://raw.githubusercontent.com/kebasyaty/scruby-return-dict/v0/assets/project_status/pre-alpha.svg"
-      alt="Project Status">
-  </a>
-</p>
-
 <br>
 
 [![Documentation](https://raw.githubusercontent.com/kebasyaty/scruby-return-dict/v0/assets/links/documentation.svg "Documentation")](https://kebasyaty.github.io/scruby-return-dict/ "Documentation")
