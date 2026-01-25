@@ -83,7 +83,7 @@ class ReturnDict(ScrubyPlugin):
         # Get Scruby instance
         scruby_self = self.scruby_self()
         # Variable initialization
-        search_task_fn: Callable = scruby_self._task_find
+        search_task_fn: Callable = self._task_find
         branch_numbers: range = range(scruby_self._max_number_branch)
         hash_reduce_left: int = scruby_self._hash_reduce_left
         db_root: str = scruby_self._db_root
@@ -132,7 +132,7 @@ class ReturnDict(ScrubyPlugin):
         # Get Scruby instance
         scruby_self = self.scruby_self()
         # Variable initialization
-        search_task_fn: Callable = scruby_self._task_find
+        search_task_fn: Callable = self._task_find
         branch_numbers: range = range(scruby_self._max_number_branch)
         hash_reduce_left: int = scruby_self._hash_reduce_left
         db_root: str = scruby_self._db_root

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 import pytest
 from pydantic import Field
 from scruby import Scruby, ScrubyModel, ScrubySettings
@@ -53,17 +55,21 @@ class TestPositive:
             )
             await car_coll.add_doc(car)
         # Find a car
-        car: Car | None = await car_coll.plugins.returnDict.find_one(
+        car_dict: dict[str, Any] | None = await car_coll.plugins.returnDict.find_one(
             filter_fn=lambda doc: doc.brand == "Mazda",
         )
 
-        assert car.brand == "Mazda"
+        assert car_dict is not None
+        assert isinstance(car_dict, dict)
+        assert car_dict["brand"] == "Mazda"
 
-        car_2: Car | None = await car_coll.plugins.returnDict.find_one(
+        car_2_dict: dict[str, Any] | None = await car_coll.plugins.returnDict.find_one(
             filter_fn=lambda doc: doc.brand == "Mazda" and doc.model == "EZ-6 9",
         )
 
-        assert car_2.model == "EZ-6 9"
+        assert car_2_dict is not None
+        assert isinstance(car_2_dict, dict)
+        assert car_2_dict["model"] == "EZ-6 9"
         #
         # Delete DB.
         Scruby.napalm()
