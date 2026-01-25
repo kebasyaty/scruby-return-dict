@@ -5,6 +5,8 @@
 
 from __future__ import annotations
 
+__all__ = ("ReturnDict",)
+
 from typing import Any
 
 from scruby_plugin import ScrubyPlugin
