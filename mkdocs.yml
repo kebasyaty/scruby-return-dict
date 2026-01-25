@@ -81,4 +81,4 @@ nav:
   - scruby-return-dict: index.md
   - Installation: pages/installation.md
   - Usage: pages/usage.md
-  - Details: pages/plugin.md
+  - Plugin: pages/plugin.md

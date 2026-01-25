@@ -1,1 +1,1 @@
-::: scruby-return-dict.plugin
+::: scruby_return_dict.plugin
