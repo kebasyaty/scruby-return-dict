@@ -30,9 +30,6 @@ class Car(ScrubyModel):
 
 async def main() -> None:
     """Example."""
-    # Delete unnecessary tables that remain due to errors
-    await FullTextSearch.delete_orphaned_tables()
-
     # Get collection `Car`
     car_coll = await Scruby.collection(Car)
     # Create cars.
