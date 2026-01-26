@@ -1,4 +1,4 @@
-# Scruby-Return-Dict - In search methods, returns results in the form of dictionaries.
+# Scruby-Return-Dict - In search methods, returns result as dictionaries.
 # Copyright (c) 2026 Gennady Kostyunin
 # SPDX-License-Identifier: MIT
 """Scruby-Return-Dict Plugin."""
@@ -21,7 +21,7 @@ from scruby_plugin import ScrubyPlugin
 class ReturnDict(ScrubyPlugin):
     """Scruby-Return-Dict Plugin.
 
-    In search methods, returns results in the form of dictionaries.
+    In search methods, returns result as dictionaries.
     """
 
     def __init__(self, scruby_self: Scruby) -> None:  # noqa: D107
