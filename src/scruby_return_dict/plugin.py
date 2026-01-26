@@ -1,4 +1,4 @@
-# Scruby-Return-Dict - In search methods, returns results in the form of dictionaries.
+# Scruby-Return-Dict - In search methods, returns result as dictionaries.
 # Copyright (c) 2026 Gennady Kostyunin
 # SPDX-License-Identifier: MIT
 """Scruby-Return-Dict Plugin."""
@@ -21,7 +21,7 @@ from scruby_plugin import ScrubyPlugin
 class ReturnDict(ScrubyPlugin):
     """Scruby-Return-Dict Plugin.
 
-    In search methods, returns results in the form of dictionaries.
+    In search methods, returns result as dictionaries.
     """
 
     def __init__(self, scruby_self: Scruby) -> None:  # noqa: D107
@@ -41,7 +41,7 @@ class ReturnDict(ScrubyPlugin):
         This method is for internal use.
 
         Returns:
-            List of documents or None.
+            List of documents as dictionaries or None.
         """
         branch_number_as_hash: str = f"{branch_number:08x}"[hash_reduce_left:]
         separated_hash: str = "/".join(list(branch_number_as_hash))
@@ -78,7 +78,7 @@ class ReturnDict(ScrubyPlugin):
             filter_fn (Callable): A function that execute the conditions of filtering.
 
         Returns:
-            Document or None.
+            One document as dictionary or None.
         """
         # Get Scruby instance
         scruby_self = self.scruby_self()
@@ -125,7 +125,7 @@ class ReturnDict(ScrubyPlugin):
                                Number of documents per page = limit_docs.
 
         Returns:
-            List of documents or None.
+            List of documents as dictionaries or None.
         """
         # The `page_number` parameter must not be less than one
         assert page_number > 0, "`find_many` => The `page_number` parameter must not be less than one."

@@ -9,7 +9,7 @@
   </p>
   <p>
     <h1>scruby-return-dict</h1>
-    <h3>Plugin for Scruby - In search methods, returns results in the form of dictionaries.</h3>
+    <h3>Plugin for Scruby - In search methods, returns result as dictionaries.</h3>
     <p align="center">
       <a href="https://github.com/kebasyaty/scruby-return-dict/actions/workflows/test.yml" alt="Build Status"><img src="https://github.com/kebasyaty/scruby-return-dict/actions/workflows/test.yml/badge.svg" alt="Build Status"></a>
       <a href="https://kebasyaty.github.io/scruby-return-dict/" alt="Docs"><img src="https://img.shields.io/badge/docs-available-brightgreen.svg" alt="Docs"></a>
@@ -63,7 +63,6 @@ ScrubySettings.plugins = [
 
 class Car(ScrubyModel):
     """Car model."""
-
     brand: str = Field(strict=True, frozen=True)
     model: str = Field(strict=True, frozen=True)
     year: int = Field(strict=True, frozen=True)
@@ -79,9 +78,6 @@ class Car(ScrubyModel):
 
 async def main() -> None:
     """Example."""
-    # Delete unnecessary tables that remain due to errors
-    await FullTextSearch.delete_orphaned_tables()
-
     # Get collection `Car`
     car_coll = await Scruby.collection(Car)
     # Create cars.
